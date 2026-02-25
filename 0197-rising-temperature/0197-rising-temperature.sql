@@ -1,0 +1,1 @@
+select id from (select id, recordDate,lag(recordDate) over(order by recordDate) pDate,temperature, lag(temperature) over(order by recordDate) pTemp from Weather ) w where dateDiff(recordDate,pDate)=1 and temperature>pTemp;
