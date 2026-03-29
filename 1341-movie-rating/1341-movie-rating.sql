@@ -1,0 +1,3 @@
+(select u.name as results from (select user_id,count(*) n  from MovieRating group by user_id) rating_c inner join users u on rating_c.user_id=u.user_id order by rating_c.n desc, u.name asc limit 1)
+union all
+(select m.title from (select movie_id, avg(rating) mean from MovieRating where created_at like "2020-02%" group by movie_id) movie_r inner join Movies m on movie_r.movie_id=m.movie_id  order by movie_r.mean desc,m.title asc limit 1)
