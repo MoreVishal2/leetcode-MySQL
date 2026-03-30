@@ -1,0 +1,1 @@
+select user_id, concat(UCASE(substr(name,1,1)),LCASE(substr(name,2))) as name from Users order by user_id
